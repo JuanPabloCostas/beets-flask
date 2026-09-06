@@ -1,22 +1,15 @@
 services:
     beets-flask:
-        image: metasauce/beets-flask:stable
+        image: metasauce/beets-flask:latest
         restart: unless-stopped
         ports:
             - "5001:5001"
         environment:
             # Change to your timezone
-            TZ: "Europe/Berlin"
-            # 502 is default on macos, 1000 on linux
-            USER_ID: 1000
-            GROUP_ID: 1000
-            # Optional: Add extra groups to the beetle user for file permissions
-            # Format: "group_name1:gid1,group_name2:gid2"
-            # Example: EXTRA_GROUPS: "nas_shares:1001,media:1002"
+            TZ: America/Mexico_City
+            PUID: 1000
+            PGID: 1000
         volumes:
-            - /wherever/config/:/config
-            # for music folders, match paths inside and out of container!
-            - /music_path/inbox/:/music_path/inbox/
-            - /music_path/clean/:/music_path/clean/
-            # If you want to persist the logs, you can mount a logs directory
-            # - /wherever/logs/:/logs
+            - /srv/music-stack/beets-flask-test:/config
+            - /home/jp_srv/music-library:/library
+            - /mnt/storage/music-data/music/sources:/music/sources

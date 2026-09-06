@@ -1,0 +1,67 @@
+CPU info:
+Architecture:                x86_64
+  CPU op-mode(s):            32-bit, 64-bit
+  Address sizes:             36 bits physical, 48 bits virtual
+  Byte Order:                Little Endian
+CPU(s):                      4
+  On-line CPU(s) list:       0-3
+Vendor ID:                   GenuineIntel
+  Model name:                Intel(R) Core(TM) i5-2500 CPU @ 3.30GHz
+    CPU family:              6
+    Model:                   42
+    Thread(s) per core:      1
+    Core(s) per socket:      4
+    Socket(s):               1
+    Stepping:                7
+    CPU(s) scaling MHz:      86%
+    CPU max MHz:             3700.0000
+    CPU min MHz:             1600.0000
+    BogoMIPS:                6584.71
+    Flags:                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ht tm pbe syscall nx rdtscp lm constant_tsc arch_perf
+                             mon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2
+                             apic popcnt tsc_deadline_timer aes xsave avx lahf_lm epb pti ssbd ibrs ibpb stibp tpr_shadow flexpriority ept vpid xsaveopt dtherm ida arat pln pts vnmi md_clea
+                             r flush_l1d
+
+
+Running image: metasauce/beets-flask:latest
+
+beets-flask-1  | [Entrypoint] Fixing permissions as 'root' with UID 0 and GID 0
+beets-flask-1  | [Entrypoint] Setting beetle user to 1000:1000
+beets-flask-1  | [Entrypoint] User beetle now has uid=1000(beetle) gid=1000(beetle) groups=1000(beetle)
+beets-flask-1  | [Entrypoint] Done fixing permissions
+beets-flask-1  | [Entrypoint] Running as 'beetle' with UID 1000 and GID 1000
+beets-flask-1  | [Entrypoint] Current working directory: /repo
+beets-flask-1  | [Entrypoint] Version info:
+beets-flask-1  | [Entrypoint]   Backend:  2.0.0-rc6
+beets-flask-1  | [Entrypoint]   Frontend: 2.0.0-rc6
+beets-flask-1  | [Entrypoint]   Mode:     prod
+beets-flask-1  | [INFO] beets-flask: Running database migrations...
+beets-flask-1  | [INFO] alembic.runtime.migration: Context impl SQLiteImpl.
+beets-flask-1  | [INFO] alembic.runtime.migration: Will assume non-transactional DDL.
+beets-flask-1  | [INFO] beets-flask: No pending migrations. Skipping.
+beets-flask-1  | [INFO] beets-flask: Database migrations complete.
+beets-flask-1  | [INFO] beets-flask: Starting uvicorn server
+beets-flask-1  | [INFO] beets-flask: Server running on http://0.0.0.0:5001
+beets-flask-1  | [INFO] beets-flask.wdog: Registering watchdog with debounce of 30 seconds for inboxes: ['/music/beets_flask_config_example/inbox_off', '/music/beets_flask_config_example/inbox_auto', '/music/beets_flask_config_example/inbox_preview']
+
+
+% curl localhost:5001        
+curl: (52) Empty reply from server
+% curl localhost:5173
+curl: (52) Empty reply from server
+
+beets-flask  | /venv/lib/python3.12/site-packages/polars/_cpu_check.py:271: RuntimeWarning: Missing required CPU features.
+beets-flask  | 
+beets-flask  | The following required CPU features were not detected:
+beets-flask  |     avx2, fma, bmi1, bmi2, lzcnt, movbe
+beets-flask  | Continuing to use this version of Polars on this processor will likely result in a crash.
+beets-flask  | Install `polars[rtcompat]` instead of `polars` to run Polars with better compatibility.
+beets-flask  | 
+beets-flask  | Hint: If you are on an Apple ARM machine (e.g. M1) this is likely due to running Python under Rosetta.
+beets-flask  | It is recommended to install a native version of Python that does not run under Rosetta x86-64 emulation.
+beets-flask  | 
+beets-flask  | If you believe this warning to be a false positive, you can set the `POLARS_SKIP_CPU_CHECK` environment variable to bypass this check.
+
+
+
+

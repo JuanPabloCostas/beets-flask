@@ -1,0 +1,25 @@
+"polars[rtcompat]>=1.36.1"
+$ docker compose -f docker/docker-compose.local-prod.yaml build --no-cache
+$ docker compose -f docker/docker-compose.local-prod.yaml up -d
+[+] up 1/1
+ ✔ Container docker-beets-flask-1 Started                                                                                                                        0.6s
+$ docker compose -f docker/docker-compose.local-prod.yaml logs -f
+beets-flask-1  | [Entrypoint] Fixing permissions as 'root' with UID 0 and GID 0
+beets-flask-1  | [Entrypoint] Setting beetle user to 1000:1000
+beets-flask-1  | [Entrypoint] User beetle now has uid=1000(beetle) gid=1000(beetle) groups=1000(beetle)
+beets-flask-1  | [Entrypoint] Done fixing permissions
+beets-flask-1  | [Entrypoint] Running as 'beetle' with UID 1000 and GID 1000
+beets-flask-1  | [Entrypoint] Current working directory: /repo
+beets-flask-1  | [Entrypoint] Version info:
+beets-flask-1  | [Entrypoint]   Backend:  2.0.0-rc6
+beets-flask-1  | [Entrypoint]   Frontend: 2.0.0-rc6
+beets-flask-1  | [Entrypoint]   Mode:     prod
+beets-flask-1  | [INFO] beets-flask: Running database migrations...
+beets-flask-1  | [INFO] alembic.runtime.migration: Context impl SQLiteImpl.
+beets-flask-1  | [INFO] alembic.runtime.migration: Will assume non-transactional DDL.
+beets-flask-1  | [INFO] beets-flask: No pending migrations. Skipping.
+beets-flask-1  | [INFO] beets-flask: Database migrations complete.
+beets-flask-1  | [INFO] beets-flask: Starting uvicorn server
+beets-flask-1  | [INFO] beets-flask: Server running on http://0.0.0.0:5001
+beets-flask-1  | [INFO] beets-flask.wdog: Registering watchdog with debounce of 30 seconds for inboxes: ['/music/beets_flask_config_example/inbox_off', '/music/beets_flask_config_example/inbox_auto', '/music/beets_flask_config_example/inbox_preview']
+beets-flask-1  | [INFO] beets-flask: Setting up Web-Terminal
